@@ -1,0 +1,76 @@
+@Webapi_HostAddress = http://localhost:5042
+
+
+GET {{Webapi_HostAddress}}/
+Accept: application/json
+
+
+
+### Register Admin (Valid)
+POST {{Webapi_HostAddress}}/register?role=user
+Content-Type: application/json
+
+{
+    "username": "admin.user123",
+    "password": "AdminPass123!@"
+}
+
+### Register User (Valid)
+POST {{Webapi_HostAddress}}/register?role=user
+Content-Type: application/json
+
+{
+  "username": "user.user123",
+  "password": "UserPass123!@"
+}
+
+
+###
+
+POST {{Webapi_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "username": "user.user123",
+  "password": "UserPass123!@"
+}
+
+### You need to change the token you got from login.
+
+GET {{Webapi_HostAddress}}/files
+Authorization: Bearer 
+
+###
+
+GET {{Webapi_HostAddress}}/admin-dashboard
+Authorization: Bearer 
+
+### Admin interactions
+
+POST {{Webapi_HostAddress}}/register?role=admin
+Content-Type: application/json
+
+{
+  "username": "johndoeadmin",
+  "password": "Password12345678@"
+}
+
+###
+
+POST {{Webapi_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "username": "johndoeadmin",
+  "password": "Password12345678@"
+}
+
+###
+
+GET {{Webapi_HostAddress}}/files
+Authorization: Bearer  
+
+###
+
+GET {{Webapi_HostAddress}}/admin-dashboard
+Authorization: Bearer
